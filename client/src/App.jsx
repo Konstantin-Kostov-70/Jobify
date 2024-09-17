@@ -2,7 +2,7 @@ import {createBrowserRouter, RouterProvider} from 'react-router-dom';
 import {
   Addjob,
   Admin,
-  AllJob,
+  AllJobs,
   DashboardLayout,
   DeleteJob,
   EditJob,
@@ -35,21 +35,31 @@ const router = createBrowserRouter([
       },
       {
         path: 'dashboard',
-        element: <DashboardLayout />
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <Addjob />
+          },
+          {
+            path: 'all-jobs',
+            element: <AllJobs />
+          },
+          {
+            path: 'stats',
+            element: <Stats />
+          },
+          {
+            path: 'profile',
+            element: <Profile />
+          },
+          {
+            path: 'admin',
+            element: <Admin />
+          },
+        ]
       },
     ]
-  },
-  {
-    path: '/add-job',
-    element: <Addjob />
-  },
-  {
-    path: '/admin',
-    element: <Admin />
-  },
-  {
-    path: '/all-job',
-    element: <AllJob />
   },
   {
     path: '/delete',
@@ -66,14 +76,6 @@ const router = createBrowserRouter([
   {
     path: '/landing',
     element: <Landing />
-  },
-  {
-    path: '/profile',
-    element: <Profile />
-  },
-  {
-    path: '/stats',
-    element: <Stats />
   },
 ]);
 
