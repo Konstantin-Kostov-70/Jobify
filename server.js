@@ -9,18 +9,6 @@ import jobRouter from './routes/jobRouter.js'
 dotenv.config();
 const app = express();
 
-let jobs = [
-  {
-    id: nanoid(),
-    company: "Apple",
-    position: "front-end",
-  },
-  {
-    id: nanoid(),
-    company: "Google",
-    position: "back-end",
-  },
-];
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
