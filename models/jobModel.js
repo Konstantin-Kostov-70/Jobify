@@ -17,7 +17,7 @@ const JobSchema = new mongoose.Schema(
     },
     jobLocation: {
       type: String,
-      default: "my-city",
+      default: "my city",
     },
   },
   { timestamps: true }
