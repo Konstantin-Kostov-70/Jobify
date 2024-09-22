@@ -4,9 +4,11 @@ import morgan from "morgan";
 import * as dotenv from "dotenv";
 import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
+import cookieParser from "cookie-parser";
 
 // MIDDLEWARE
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
+import {authenticateUser} from "./middleware/authMiddleware.js"
 
 // ROUTERS
 import jobRouter from "./routes/jobRouter.js";
@@ -20,8 +22,9 @@ if (process.env.NODE_ENV === "development") {
 }
 
 app.use(express.json());
+app.use(cookieParser());
 
-app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/jobs", authenticateUser, jobRouter);
 app.use("/api/v1/auth", authRouter);
 
 //TEST ROUTS
