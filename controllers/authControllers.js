@@ -1,6 +1,8 @@
 import { StatusCodes } from "http-status-codes";
 import User from "../models/userModel.js";
-import { hashPassword } from "../utils/passwordsUtils.js";
+import { hashPassword, comparePassword } from "../utils/passwordsUtils.js";
+import { UnauthenticatedError } from "../errors/customError.js";
+import { createJWT } from "../utils/tokenUtils.js";
 
 export const register = async (req, res) => {
     const hashedPassword = await hashPassword(req.body.password);
@@ -14,5 +16,15 @@ export const register = async (req, res) => {
 };
 
 export const login = async (req, res) => {
-    res.send('login');
+    const user = await User.findOne({email: req.body.email});  
+    const isValidUser = user && (await comparePassword(req.body.password, user.password));
+
+    if (!isValidUser) throw new UnauthenticatedError('invalid credentials');
+
+    const token = createJWT({
+        userId: user._id,
+        role: user.role
+    })
+
+    res.json({ token });
 };
