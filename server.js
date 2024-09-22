@@ -10,6 +10,7 @@ import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 
 // ROUTERS
 import jobRouter from "./routes/jobRouter.js";
+import authRouter  from "./routes/authRouter.js"
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,7 @@ if (process.env.NODE_ENV === "development") {
 app.use(express.json());
 
 app.use("/api/v1/jobs", jobRouter);
+app.use("/api/v1/auth", authRouter);
 
 //TEST ROUTS
 
