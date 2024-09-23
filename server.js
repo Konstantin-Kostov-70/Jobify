@@ -13,6 +13,7 @@ import {authenticateUser} from "./middleware/authMiddleware.js"
 // ROUTERS
 import jobRouter from "./routes/jobRouter.js";
 import authRouter  from "./routes/authRouter.js"
+import userRouter from "./routes/userRouter.js"
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 app.use("/api/v1/jobs", authenticateUser, jobRouter);
+app.use("/api/v1/users", authenticateUser, userRouter);
 app.use("/api/v1/auth", authRouter);
 
 //TEST ROUTS
