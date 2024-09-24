@@ -15,7 +15,7 @@ import {
   Stats
 } from './pages'
 
-import { registerAction } from './actions/fetchActions';
+import { registerAction, loginAction } from './actions/fetchActions';
 
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
@@ -37,7 +37,8 @@ const router = createBrowserRouter([
       },
       {
         path: 'login',
-        element: <Login />
+        element: <Login />,
+        action: loginAction
       },
       {
         path: 'register',
