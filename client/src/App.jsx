@@ -4,7 +4,6 @@ import {
   Admin,
   AllJobs,
   DashboardLayout,
-  DeleteJob,
   EditJob,
   Error,
   HomeLayout,
@@ -73,25 +72,20 @@ const router = createBrowserRouter([
             path: 'admin',
             element: <Admin />
           },
+          {
+            path: '/edit-job/:id',
+            element: <EditJob />
+          },
+          {
+            path: '/delete-job/:id',
+          },
         ]
       },
     ]
   },
   {
-    path: '/delete',
-    element: <DeleteJob />
-  },
-  {
-    path: '/edit',
-    element: <EditJob />
-  },
-  {
     path: '/error',
     element: <Error />
-  },
-  {
-    path: '/landing',
-    element: <Landing />
   },
 ]);
 
