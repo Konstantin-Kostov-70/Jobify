@@ -15,7 +15,7 @@ import {
   Stats
 } from './pages'
 
-import { registerAction, loginAction } from './actions/fetchActions';
+import { registerAction, loginAction, addJobAction } from './actions/fetchActions';
 import { dashboardLoader } from './loaders/dataLoaders';
 
 export const checkDefaultTheme = () => {
@@ -53,7 +53,8 @@ const router = createBrowserRouter([
         children: [
           {
             index: true,
-            element: <Addjob />
+            element: <Addjob />,
+            action: addJobAction
           },
           {
             path: 'all-jobs',
