@@ -4,9 +4,19 @@ import customFetch from "../utils/customFetch";
 export const dashboardLoader = async () => {
   try {
     const { data } = await customFetch.get('/users/current-user');
-    return data
+    return data 
   } catch (error) {
     console.log(error?.response?.data?.msg);
     return redirect('/')
+  }
+};
+
+export const allJobsLoader = async () => {
+  try {
+    const { data } = await customFetch.get('/jobs');
+    return data
+  } catch (error) {
+    console.log(error?.response?.data?.msg);
+    return error
   }
 };
