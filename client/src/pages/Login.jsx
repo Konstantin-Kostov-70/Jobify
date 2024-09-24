@@ -1,6 +1,6 @@
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
-import {Logo, FormRow} from '../components';
-import {Link, Form, useNavigation} from 'react-router-dom';
+import { Logo, FormRow } from '../components';
+import { Link, Form, useNavigation } from 'react-router-dom';
 
 const Login = () => {
   const navigation = useNavigation();

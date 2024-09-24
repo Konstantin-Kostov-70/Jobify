@@ -19,7 +19,7 @@ export const registerAction = async ({ request }) => {
 export const loginAction = async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
-
+ 
   try {
     await customFetch.post("/auth/login", data);
     toast.success('Login successful');
