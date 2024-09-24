@@ -1,12 +1,17 @@
 import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
 import { FormRow } from "../components";
 import Logo from "../components/Logo";
-import { Link } from "react-router-dom";
+import { useNavigation, Link, Form } from "react-router-dom";
 
 const Register = () => {
+  const navigation = useNavigation();
+  console.log(navigation);
+
+  const isSubmitting = navigation.state === 'submitting';
+  
   return (
     <Wrapper>
-      <form className="form">
+      <Form method="post" className="form">
         <Logo />
         <h4>Register</h4>
         <FormRow type='text' name='name' defaultValue='john'/>
@@ -14,8 +19,8 @@ const Register = () => {
         <FormRow type='text' name='location' defaultValue='london'/>
         <FormRow type='text' name='email' defaultValue='john@gmail.com'/>
         <FormRow type='password' name='password' defaultValue='secret123'/>
-        <button className="btn btn-block" type="submit">
-          Submit
+        <button className="btn btn-block" type="submit" disabled={isSubmitting}>
+          {isSubmitting ? 'Submitting...' : 'Submit'}
         </button>
         <p>
           Already a member?
@@ -23,7 +28,7 @@ const Register = () => {
             Login
           </Link>
         </p>
-      </form>
+      </Form>
     </Wrapper>
   );
 };
