@@ -15,7 +15,7 @@ import {
   Stats
 } from './pages'
 
-import { action as registerAction } from './actions/registerAction';
+import { registerAction } from './actions/fetchActions';
 
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
