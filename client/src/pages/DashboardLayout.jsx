@@ -1,5 +1,5 @@
 import Wrapper from "../assets/wrappers/Dashboard";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLoaderData } from "react-router-dom";
 import { SmallSidebar, BigSidebar, Navbar } from "../components";
 import { createContext, useContext, useState } from "react";
 import { checkDefaultTheme } from "../App/"
@@ -8,8 +8,8 @@ const DashboardContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 const DashboardLayout = () => {
-
-  const user = { name: "john" };
+  const user = useLoaderData();
+  
   const [showSidebar, setShowSidebar] = useState(false);
   const [isDarkTheme, setIsDarkTheme] = useState(checkDefaultTheme());
 
