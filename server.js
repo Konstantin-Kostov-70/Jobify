@@ -6,6 +6,11 @@ import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
 import cookieParser from "cookie-parser";
 
+//PUBLIC
+import { dirname } from "path";
+import { fileURLToPath } from "url";
+import path from "path";
+
 // MIDDLEWARE
 import errorHandlerMiddleware from "./middleware/errorHandlerMiddleware.js";
 import {authenticateUser} from "./middleware/authMiddleware.js"
@@ -17,6 +22,9 @@ import userRouter from "./routes/userRouter.js"
 
 dotenv.config();
 const app = express();
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+app.use(express.static(path.resolve(__dirname, "./public")));
 
 if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
@@ -36,7 +44,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("*", (req, res) => {
-  res.status(404).json({ msg: "not found" });
+  res.status(StatusCodes.NOT_FOUND).json({ msg: "not found" });
 });
 
 app.use(errorHandlerMiddleware);
@@ -52,3 +60,5 @@ try {
   console.log(error);
   process.exit(1);
 }
+
+
