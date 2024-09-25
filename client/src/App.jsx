@@ -14,7 +14,7 @@ import {
   Stats
 } from './pages'
 
-import { registerAction, loginAction, addJobAction, editJobAction } from './actions/fetchActions';
+import { registerAction, loginAction, addJobAction, editJobAction, deleteJobAction } from './actions/fetchActions';
 import { allJobsLoader, dashboardLoader, editJobLoader } from './loaders/dataLoaders';
 
 export const checkDefaultTheme = () => {
@@ -80,6 +80,7 @@ const router = createBrowserRouter([
           },
           {
             path: 'delete-job/:id',
+            action: deleteJobAction,
           },
         ]
       },
