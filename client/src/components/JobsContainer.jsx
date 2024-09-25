@@ -5,7 +5,7 @@ import { useAllJobsContext } from "../pages/AllJobs";
 const JobsContainer = () => {
   const { jobs } = useAllJobsContext();
 
-  if (!jobs) {
+  if (jobs.length === 0) {
     return (
       <Wrapper>
         <h2>No jobs to display ...</h2>
