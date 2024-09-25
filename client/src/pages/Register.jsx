@@ -1,11 +1,9 @@
 import Wrapper from "../assets/wrappers/RegisterAndLoginPage";
-import { FormRow } from "../components";
+import { FormRow, SubmitBtn } from "../components";
 import Logo from "../components/Logo";
-import { useNavigation, Link, Form } from "react-router-dom";
+import { Link, Form } from "react-router-dom";
 
 const Register = () => {
-  const navigation = useNavigation();
-  const isSubmitting = navigation.state === 'submitting';
   
   return (
     <Wrapper>
@@ -17,9 +15,7 @@ const Register = () => {
         <FormRow type='text' name='location' defaultValue='london'/>
         <FormRow type='text' name='email' defaultValue='john@gmail.com'/>
         <FormRow type='password' name='password' defaultValue='secret123'/>
-        <button className="btn btn-block" type="submit" disabled={isSubmitting}>
-          {isSubmitting ? 'Submitting...' : 'Submit'}
-        </button>
+        <SubmitBtn />
         <p>
           Already a member?
           <Link to="/login" className="member-btn">
