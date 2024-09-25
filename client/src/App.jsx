@@ -1,4 +1,4 @@
-import {createBrowserRouter, RouterProvider} from 'react-router-dom';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   Addjob,
   Admin,
@@ -11,92 +11,103 @@ import {
   Login,
   Profile,
   Register,
-  Stats
-} from './pages'
+  Stats,
+} from "./pages";
 
-import { registerAction, loginAction, addJobAction, editJobAction, deleteJobAction } from './actions/fetchActions';
-import { adminLoader, allJobsLoader, dashboardLoader, editJobLoader } from './loaders/dataLoaders';
+import {
+  registerAction,
+  loginAction,
+  addJobAction,
+  editJobAction,
+  deleteJobAction,
+  profileAction,
+} from "./actions/fetchActions";
+import {
+  adminLoader,
+  allJobsLoader,
+  dashboardLoader,
+  editJobLoader,
+} from "./loaders/dataLoaders";
 
 export const checkDefaultTheme = () => {
-  const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
-  document.body.classList.toggle('dark-theme', isDarkTheme);
-  return isDarkTheme
+  const isDarkTheme = localStorage.getItem("darkTheme") === "true";
+  document.body.classList.toggle("dark-theme", isDarkTheme);
+  return isDarkTheme;
 };
 
 checkDefaultTheme();
 
 const router = createBrowserRouter([
   {
-    path: '/',
+    path: "/",
     element: <HomeLayout />,
     errorElement: <Error />,
     children: [
       {
-        index:true,
-        element: <Landing />
+        index: true,
+        element: <Landing />,
       },
       {
-        path: 'login',
+        path: "login",
         element: <Login />,
-        action: loginAction
+        action: loginAction,
       },
       {
-        path: 'register',
+        path: "register",
         element: <Register />,
-        action: registerAction
+        action: registerAction,
       },
       {
-        path: 'dashboard',
+        path: "dashboard",
         element: <DashboardLayout />,
         loader: dashboardLoader,
         children: [
           {
             index: true,
             element: <Addjob />,
-            action: addJobAction
+            action: addJobAction,
           },
           {
-            path: 'all-jobs',
+            path: "all-jobs",
             element: <AllJobs />,
-            loader: allJobsLoader
+            loader: allJobsLoader,
           },
           {
-            path: 'stats',
-            element: <Stats />
+            path: "stats",
+            element: <Stats />,
           },
           {
-            path: 'profile',
-            element: <Profile />
+            path: "profile",
+            element: <Profile />,
+            action: profileAction,
           },
           {
-            path: 'admin',
+            path: "admin",
             element: <Admin />,
             loader: adminLoader,
           },
           {
-            path: 'edit-job/:id',
+            path: "edit-job/:id",
             element: <EditJob />,
             action: editJobAction,
             loader: editJobLoader,
           },
           {
-            path: 'delete-job/:id',
+            path: "delete-job/:id",
             action: deleteJobAction,
           },
-        ]
+        ],
       },
-    ]
+    ],
   },
   {
-    path: '/error',
-    element: <Error />
+    path: "/error",
+    element: <Error />,
   },
 ]);
 
 const App = () => {
-  return <RouterProvider router={router} />
-}
+  return <RouterProvider router={router} />;
+};
 
-export default App
-
-
+export default App;
