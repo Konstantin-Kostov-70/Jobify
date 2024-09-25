@@ -58,3 +58,12 @@ export const editJobAction = async ({request, params}) => {
   }
 };
 
+export const deleteJobAction = async({params}) => {
+  try {
+    await customFetch.delete(`/jobs/${params.id}`);
+    toast.success('Job deleted successfully');
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+  }
+  return redirect('/dashboard/all-jobs');
+}
