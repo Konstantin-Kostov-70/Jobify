@@ -15,7 +15,7 @@ import {
 } from './pages'
 
 import { registerAction, loginAction, addJobAction, editJobAction, deleteJobAction } from './actions/fetchActions';
-import { allJobsLoader, dashboardLoader, editJobLoader } from './loaders/dataLoaders';
+import { adminLoader, allJobsLoader, dashboardLoader, editJobLoader } from './loaders/dataLoaders';
 
 export const checkDefaultTheme = () => {
   const isDarkTheme = localStorage.getItem('darkTheme') === 'true';
@@ -70,7 +70,8 @@ const router = createBrowserRouter([
           },
           {
             path: 'admin',
-            element: <Admin />
+            element: <Admin />,
+            loader: adminLoader,
           },
           {
             path: 'edit-job/:id',

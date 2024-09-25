@@ -31,3 +31,14 @@ export const editJobLoader = async ({ params }) => {
     return redirect("/dashboard/all-jobs")
   }
 };
+
+export const adminLoader = async () => {
+  try {
+    const response = await customFetch.get("/users/admin/app-stats");
+    return response.data;
+  } catch (error) {
+    toast.error("You are not authorized to view this page");
+    console.log(error?.response?.data?.msg);
+    return redirect("/dashboard");
+  }
+};
