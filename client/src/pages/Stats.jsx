@@ -1,6 +1,15 @@
-const Stats = () => {
-  return <h1>Stats Page</h1>
- 
-}
+import { ChartsContainer, StatsContainer } from "../components";
+import { useLoaderData } from "react-router-dom";
 
-export default Stats
+const Stats = () => {
+  const { defaultStats, monthlyApplications } = useLoaderData();
+ 
+  return (
+    <>
+      <StatsContainer defaultStats={defaultStats} />
+      {monthlyApplications?.length > 1 && <ChartsContainer data={monthlyApplications} />}
+    </>
+  );
+};
+
+export default Stats;
