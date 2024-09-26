@@ -27,6 +27,7 @@ import {
   allJobsLoader,
   dashboardLoader,
   editJobLoader,
+  statsLoader
 } from "./loaders/dataLoaders";
 
 export const checkDefaultTheme = () => {
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
           {
             path: "stats",
             element: <Stats />,
+            loader: statsLoader,
           },
           {
             path: "profile",
