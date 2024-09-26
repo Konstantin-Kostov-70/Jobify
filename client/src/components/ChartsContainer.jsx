@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useState } from "react";
 
-import BarChart from "./BarChart";
+import BarChartComponent from "./BarChartComponent";
 import AreaChartComponent from "./AreaChartComponent";
 import Wrapper from "../assets/wrappers/ChartsContainer";
 
@@ -14,7 +14,7 @@ const ChartsContainer = ({ data }) => {
       <button type="button" onClick={() => setBarChart(!barChart)}>
         {barChart ? "Area Chart" : "Bar Chart"}
       </button>
-      { barChart ? <BarChart data={data} /> : <AreaChartComponent data={data} /> }
+      { barChart ? <BarChartComponent data={data} /> : <AreaChartComponent data={data} /> }
     </Wrapper>
   );
 };
