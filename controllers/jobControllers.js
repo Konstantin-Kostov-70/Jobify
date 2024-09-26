@@ -2,10 +2,25 @@ import Job from "../models/jobModel.js";
 import { StatusCodes } from "http-status-codes";
 import mongoose from "mongoose";
 import day from "dayjs";
+import { searchQuery, sortQuery } from "../utils/searchUtils.js";
 
 export const getAllJobs = async (req, res) => {
-  const jobs = await Job.find({ createdBy: req.user.userId });
-  res.status(StatusCodes.OK).json({ jobs });
+ 
+  const queryObject = searchQuery(req)
+  const sortKey = sortQuery(req)
+
+  // PAGINATION
+
+  const page = Number(req.query.page) || 1;
+  const limit = Number(req.query.limit) || 10;
+  const skip = (page - 1) * limit
+
+  
+  const jobs = await Job.find(queryObject).sort(sortKey).skip(skip).limit(limit);
+  const totalJobs = await Job.countDocuments(queryObject);
+  const numOfPages = Math.ceil(totalJobs / limit);
+
+  res.status(StatusCodes.OK).json({ totalJobs, numOfPages, currentPage: page, jobs });
 };
 
 export const createJob = async (req, res) => {
