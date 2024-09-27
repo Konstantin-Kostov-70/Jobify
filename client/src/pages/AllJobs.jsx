@@ -5,10 +5,10 @@ import { createContext, useContext } from "react";
 const AllJobsContext = createContext();
 
 const AllJobs = () => {
-  const {jobs}  = useLoaderData();
-  
+  const {data, searchValues}  = useLoaderData();
+ 
   return (
-    <AllJobsContext.Provider value={{ jobs }}>
+    <AllJobsContext.Provider value={{ data, searchValues }}>
       <SearchContainer />
       <JobsContainer />
     </AllJobsContext.Provider>
