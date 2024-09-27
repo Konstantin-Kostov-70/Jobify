@@ -5,7 +5,6 @@ import day from "dayjs";
 import { searchQuery, sortQuery } from "../utils/searchUtils.js";
 
 export const getAllJobs = async (req, res) => {
- 
   const queryObject = searchQuery(req)
   const sortKey = sortQuery(req)
 
