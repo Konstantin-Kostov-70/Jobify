@@ -1,9 +1,27 @@
 import Wrapper from '../assets/wrappers/RegisterAndLoginPage';
 import { Logo, FormRow, SubmitBtn } from '../components';
-import { Link, Form } from 'react-router-dom';
-import { loginDemoUser } from '../utils/loginDemoUser';
+import { Link, Form, useNavigate } from 'react-router-dom';
+import customFetch from "../utils/customFetch"
+import { toast } from "react-toastify"
 
 const Login = () => {
+  const navigate = useNavigate();
+
+  const loginDemoUser = async(event) => {
+    event.preventDefault();
+    const data = {
+      email: import.meta.env.VITE_DEMO_USER_EMAIL,   
+      password: import.meta.env.VITE_DEMO_USER_PASSWORD,
+    }
+    try {
+     await customFetch.post('/auth/login', data);
+     toast.success('Take a test drive');
+     return navigate('/dashboard');
+    } catch (error) {
+     toast.error(error?.response?.data?.msg);
+     return 
+    }
+ }
 
   return (
     <Wrapper>
