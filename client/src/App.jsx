@@ -102,10 +102,6 @@ const router = createBrowserRouter([
       },
     ],
   },
-  {
-    path: "/error",
-    element: <Error />,
-  },
 ]);
 
 const App = () => {
