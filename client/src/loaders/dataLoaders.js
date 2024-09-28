@@ -2,20 +2,6 @@ import { redirect } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { toast } from "react-toastify";
 
-export const allJobsLoader = async ({request}) => {
-  
-  try {
-    const params = Object.fromEntries([
-      ...new URL(request.url).searchParams.entries(),
-    ]);
-    const { data } = await customFetch.get("/jobs", {params});
-    return { data, searchValues: {...params} };
-    
-  } catch (error) {
-    console.log(error?.response?.data?.msg);
-    return error;
-  }
-};
 
 export const editJobLoader = async ({ params }) => {
   try {

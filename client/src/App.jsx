@@ -28,11 +28,11 @@ import {
 
 import {
   adminLoader,
-  allJobsLoader,
   editJobLoader,
 } from "./loaders/dataLoaders";
 import { statsLoader } from "./pages/Stats";
 import { dashboardLoader } from "./pages/DashboardLayout";
+import { allJobsLoader } from "./pages/AllJobs";
 
 import ErrorElement from "./components/ErrorElement";
 
@@ -85,7 +85,8 @@ const router = createBrowserRouter([
           {
             path: "all-jobs",
             element: <AllJobs />,
-            loader: allJobsLoader,
+            loader: allJobsLoader(queryClient),
+            errorElement: <ErrorElement />
           },
           {
             path: "stats",
