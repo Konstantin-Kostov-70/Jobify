@@ -39,7 +39,15 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
-app.use(helmet());
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],  // Default source for content
+      imgSrc: ["'self'", "data:", "https://res.cloudinary.com"],  // Allow images from self, data URIs, and Cloudinary
+      scriptSrc: ["'self'"],  // Allow scripts from your own domain
+    },
+  },
+}));
 app.use(mongoSanitize());
 app.use(express.json());
 app.use(cookieParser());
