@@ -16,12 +16,13 @@ export const registerAction = async ({ request }) => {
   }
 };
 
-export const loginAction = async ({ request }) => {
+export const loginAction = (queryClient) => async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
  
   try {
     await customFetch.post("/auth/login", data);
+    queryClient.invalidateQueries();
     toast.success('Login successful');
     return redirect('/dashboard');
   } catch (error) {
@@ -68,7 +69,7 @@ export const deleteJobAction = async({params}) => {
   return redirect('/dashboard/all-jobs');
 };
 
-export const profileAction = async ({ request }) => {
+export const profileAction = (queryClient) => async ({ request }) => {
   const formData = await request.formData();
 
   const file = formData.get("avatar");
@@ -79,7 +80,9 @@ export const profileAction = async ({ request }) => {
 
   try {
     await customFetch.patch("/users/update-user", formData);
+    queryClient.invalidateQueries(["user"]);
     toast.success("Profile updated successfully");
+    return redirect('/dashboard')
   } catch (error) {
     toast.error(error?.response?.data?.msg);
   }
