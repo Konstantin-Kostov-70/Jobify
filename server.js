@@ -70,7 +70,7 @@ const port = process.env.PORT || 5100;
 
 try {
   await mongoose.connect(process.env.MONGO_URL);
-  app.listen(port, () => {
+  app.listen(port, '127.0.0.1', () => {
     console.log(`server working in PORT ${port}`);
   });
 } catch (error) {
