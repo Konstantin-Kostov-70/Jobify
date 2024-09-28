@@ -6,6 +6,8 @@ import mongoose from "mongoose";
 import { StatusCodes } from "http-status-codes";
 import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
+import helmet from "helmet";
+import mongoSanitize from "express-mongo-sanitize";
 
 //PUBLIC
 import { dirname } from "path";
@@ -37,6 +39,8 @@ if (process.env.NODE_ENV === "development") {
   app.use(morgan("dev"));
 }
 
+app.use(helmet());
+app.use(mongoSanitize());
 app.use(express.json());
 app.use(cookieParser());
 
