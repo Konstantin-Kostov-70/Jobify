@@ -31,12 +31,13 @@ export const loginAction = (queryClient) => async ({ request }) => {
   }
 };
 
-export const addJobAction = async ({ request }) => {
+export const addJobAction = (queryClient) => async ({ request }) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
  
   try {
     await customFetch.post("/jobs", data);
+    queryClient.invalidateQueries(["jobs"])
     toast.success('Job added successfully');
     return redirect('/dashboard');
   } catch (error) {
@@ -45,12 +46,13 @@ export const addJobAction = async ({ request }) => {
   }
 };
 
-export const editJobAction = async ({request, params}) => {
+export const editJobAction = (queryClient) => async ({request, params}) => {
   const formData = await request.formData();
   const data = Object.fromEntries(formData);
  
   try {
     await customFetch.patch(`/jobs/${params.id}`, data);
+    queryClient.invalidateQueries(["jobs"])
     toast.success('Job edited successfully');
     return redirect('/dashboard/all-jobs');
   } catch (error) {
@@ -59,9 +61,10 @@ export const editJobAction = async ({request, params}) => {
   }
 };
 
-export const deleteJobAction = async({params}) => {
+export const deleteJobAction = (queryClient) => async({params}) => {
   try {
     await customFetch.delete(`/jobs/${params.id}`);
+    queryClient.invalidateQueries(["jobs"])
     toast.success('Job deleted successfully');
   } catch (error) {
     toast.error(error?.response?.data?.msg);

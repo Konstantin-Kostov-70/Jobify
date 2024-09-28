@@ -26,13 +26,12 @@ import {
   profileAction,
 } from "./actions/fetchActions";
 
-import {
-  adminLoader,
-  editJobLoader,
-} from "./loaders/dataLoaders";
+
 import { statsLoader } from "./pages/Stats";
 import { dashboardLoader } from "./pages/DashboardLayout";
 import { allJobsLoader } from "./pages/AllJobs";
+import { editJobLoader } from "./pages/EditJob";
+import { adminLoader } from "./pages/Admin";
 
 import ErrorElement from "./components/ErrorElement";
 
@@ -80,7 +79,7 @@ const router = createBrowserRouter([
           {
             index: true,
             element: <Addjob />,
-            action: addJobAction,
+            action: addJobAction(queryClient),
           },
           {
             path: "all-jobs",
@@ -107,12 +106,12 @@ const router = createBrowserRouter([
           {
             path: "edit-job/:id",
             element: <EditJob />,
-            action: editJobAction,
+            action: editJobAction(queryClient),
             loader: editJobLoader,
           },
           {
             path: "delete-job/:id",
-            action: deleteJobAction,
+            action: deleteJobAction(queryClient),
           },
         ],
       },
