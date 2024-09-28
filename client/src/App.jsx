@@ -25,13 +25,15 @@ import {
   deleteJobAction,
   profileAction,
 } from "./actions/fetchActions";
+
 import {
   adminLoader,
   allJobsLoader,
   dashboardLoader,
   editJobLoader,
-  statsLoader
 } from "./loaders/dataLoaders";
+import { statsLoader } from "./pages/Stats";
+
 import ErrorElement from "./components/ErrorElement";
 
 export const checkDefaultTheme = () => {
@@ -88,7 +90,7 @@ const router = createBrowserRouter([
           {
             path: "stats",
             element: <Stats />,
-            loader: statsLoader,
+            loader: statsLoader(queryClient),
             errorElement: <ErrorElement />
           },
           {
