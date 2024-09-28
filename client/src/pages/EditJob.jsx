@@ -2,7 +2,19 @@ import { FormRow, FormRowSelect, SubmitBtn } from "../components";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { useLoaderData } from "react-router-dom";
 import { JOB_STATUS, JOB_TYPE } from "../../../utils/constants";
-import { Form } from "react-router-dom";
+import { Form, redirect } from "react-router-dom";
+import customFetch from "../utils/customFetch";
+import { toast } from "react-toastify";
+
+export const editJobLoader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(`/jobs/${params.id}`);
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return redirect("/dashboard/all-jobs")
+  }
+};
 
 const EditJob = () => {
   const { job } = useLoaderData();
