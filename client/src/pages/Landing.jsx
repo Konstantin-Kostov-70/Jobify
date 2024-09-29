@@ -17,8 +17,7 @@ const Landing = () => {
           <p>
             The online job tracking tool makes it easy to follow the process of
             searching and finding a job. Keeping statistics for each of the
-            application stages is key to the success of the professional
-            realization. Track the job on any device and visualize the progress.
+            application stages and track the job on any device.
           </p>
           <Link to="/register" className="btn register-link">
             Register
