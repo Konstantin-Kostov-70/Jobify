@@ -3,7 +3,6 @@ import main from "../assets/images/main.svg";
 import { Link } from "react-router-dom";
 import { Logo } from "../components";
 
-
 const Landing = () => {
   return (
     <Wrapper>
@@ -16,9 +15,10 @@ const Landing = () => {
             job <span>tracking</span> app
           </h1>
           <p>
-            Online job tracker make it easy to track the time spent on projects,
-            tasks and client work. Track the job hours on any device, visualise
-            the progress, budget utilisation and billable hours.
+            The online job tracking tool makes it easy to follow the process of
+            searching and finding a job. Keeping statistics for each of the
+            application stages is key to the success of the professional
+            realization. Track the job on any device and visualize the progress.
           </p>
           <Link to="/register" className="btn register-link">
             Register
