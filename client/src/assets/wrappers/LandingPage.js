@@ -31,9 +31,9 @@ const Wrapper = styled.section`
   .register-link {
     margin-right: 1rem;
   }
-  .main-img {
+  /* .main-img {
     display: none;
-  }
+  } */
   .btn {
     padding: 0.75rem 1rem;
   }
@@ -44,6 +44,11 @@ const Wrapper = styled.section`
     }
     .main-img {
       display: block;
+    }
+  }
+  @media (max-width: 991px) {
+    .page.lan {
+      margin-top: 60px;
     }
   }
 `;
