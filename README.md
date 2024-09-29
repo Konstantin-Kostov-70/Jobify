@@ -79,6 +79,7 @@ client
 - `/server/src/models`: Contains all Mongoose models for MongoDB.
 - `/server/src/routes`: Contains all API route definitions.
 
+```
 server/
 ├── controllers/            # Business logic for handling requests
 ├── middleware/             # Authentication, validation, error handling
@@ -88,6 +89,7 @@ server/
 ├── app.js                  # Main Express app setup
 ├── server.js               # Starts the Express server
 └── config/                 # Configuration for database, cloudinary, etc.
+```
 
 
 ## License
