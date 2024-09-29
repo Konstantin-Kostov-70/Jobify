@@ -28,7 +28,7 @@ export const dashboardLoader = (queryClient) => async () => {
 const DashboardContext = createContext();
 
 // eslint-disable-next-line react/prop-types
-const DashboardLayout = ({queryClient, checkDefaultTheme}) => {
+const DashboardLayout = ({queryClient}) => {
   const navigate = useNavigate();
   const navigation = useNavigation();
   const isPageLoading = navigation.state === 'loading'
