@@ -57,10 +57,8 @@ npm install bcryptjs@^2.4.3 cloudinary@^1.37.3 concurrently@^8.0.1 cookie-parser
 - `GET /users/current-user`: Get current user information.
 
 ## Frontend Structure
-- `/client/src`: Contains all frontend source code.
-- `/client/src/pages`: Contains all React components for different pages.
-- `/client/src/components`: Contains reusable React components.
 
+```
 client
 ├── src/
 │   ├── actions/           # Handles async actions like login, register, etc.
@@ -72,15 +70,11 @@ client
 │   └── index.css          # Global styles
 ├── public/
 └── vite.config.js         # Vite configuration
+```
 
 ## Backend Structure
-- `/server/src`: Contains all backend source code.
-- `/server/src/controllers`: Contains all controller logic for handling requests.
-- `/server/src/models`: Contains all Mongoose models for MongoDB.
-- `/server/src/routes`: Contains all API route definitions.
-
 ```
-server/
+/
 ├── controllers/            # Business logic for handling requests
 ├── middleware/             # Authentication, validation, error handling
 ├── models/                 # MongoDB models (User, Job)
