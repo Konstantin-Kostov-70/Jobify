@@ -48,7 +48,7 @@ const Wrapper = styled.section`
   }
   @media (max-width: 991px) {
     .page.lan {
-      margin-top: 60px;
+      margin-top: 20px;
     }
   }
 `;
