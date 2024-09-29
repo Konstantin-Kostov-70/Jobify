@@ -53,7 +53,9 @@ const DashboardLayout = ({queryClient}) => {
     navigate('/');
     queryClient.invalidateQueries()
     await customFetch.get('/auth/logout');
-    toast.success('Login out ...')
+    toast.success('Login out ...');
+    localStorage.setItem('darkTheme', false)
+    checkDefaultTheme();
   };
 
   return (
