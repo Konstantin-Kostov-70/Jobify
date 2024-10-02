@@ -2,6 +2,15 @@
 
 Jobify is a web application built using React (with Vite), Express, and MongoDB. It helps users track job applications, manage profiles, and view statistical insights about their job search.
 
+## Themes: Light and Dark Mode
+
+Jobify offers two themes to enhance your browsing experience: **Light Mode** and **Dark Mode**.
+
+- **Light Mode** provides a bright, clean interface, perfect for daytime use or well-lit environments.
+- **Dark Mode** offers a sleek, low-light interface to reduce eye strain and improve visibility in darker settings.
+
+You can easily switch between themes by clicking the theme toggle button available on the main navigation bar.
+
 ## Features
 
 - User authentication and registration.
