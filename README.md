@@ -1,4 +1,5 @@
 # Jobify - Job Tracking Application
+![jobify](https://github.com/user-attachments/assets/5277f4c8-a966-4cf8-b7e0-1f3a5e539c9f)
 
 Jobify is a web application built using React (with Vite), Express, and MongoDB. It helps users track job applications, manage profiles, and view statistical insights about their job search.
 
